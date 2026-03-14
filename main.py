@@ -25,10 +25,9 @@ def show_score(name):
 
 # Function to save the user's score to a CSV file
 def save_score(name, score):
-    file_exists = os.path.isfile('quiz_scores.csv')
+    file_exists = os.path.isfile('quiz_scores.csv') and os.path.getsize('quiz_scores.csv') > 0
     with open('quiz_scores.csv', mode='a', newline='') as score_file:
         score_writer = csv.writer(score_file)
-        # Only write the header if the file is new
         if not file_exists:
             score_writer.writerow(['Player Name', 'Total Score'])
         score_writer.writerow([name, score])
@@ -60,7 +59,8 @@ def read_high_score():
             for row in score_reader:
                 return int(row[1]), row[0]  # score, name
     except (FileNotFoundError, IndexError):
-        return 0, "No one yet"# If no high score file exists, return 0 as the default high score
+        pass
+    return 0, "No one yet"# If no high score file exists, return 0 as the default high score
 
 # Function to display the scoreboard
 def show_scoreboard():

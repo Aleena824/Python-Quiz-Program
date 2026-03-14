@@ -1,0 +1,17 @@
+# Quiz data files (auto-generated on first run)
+quiz_scores.csv
+high_score.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.thonny
